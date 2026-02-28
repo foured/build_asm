@@ -52,4 +52,4 @@ bundle="$(dirname "$SCRIPT_PATH")"
 nasm_opts+=(-I "$bundle")
 gcc -c -g -Wfatal-errors -fno-pie -m32 -o "$macro_o" "${bundle}/macro.c" || die
 nasm "${nasm_opts[@]}" -o "$prog_o" "$prog_s" || die
-gcc -no-pie -m32 -o "${basename}.out" "$prog_o" "$macro_o" || die
+gcc -no-pie -m32 "$prog_o" "$macro_o" || die
